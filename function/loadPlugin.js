@@ -82,7 +82,7 @@ function installmd(file, pluginInfo){
         for (var i in pluginInfo.nodeDepends){
             if (!fs.existsSync(path.join(__dirname, "..", "node_modules", i, "package.json"))) {
                 
-                console.log("Tiến hành cài đặt Module \""+i+"\" cho Command \""+pluginInfo.pluginName+"\":\n");
+                console.log("Tiến hành cài đặt Module \""+i+"\" cho Command \""+pluginInfo.name+"\":\n");
                 if(pluginInfo.nodeDepends[i] != ""){
                     cmd.execSync(`npm install ${i}@${pluginInfo.nodeDepends[i]}`)
                 }
