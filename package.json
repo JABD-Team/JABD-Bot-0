@@ -1,0 +1,23 @@
+{
+  "name": "JABD",
+  "version": "0.0.1",
+  "description": "hungvungubucu",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "hungvungubucu",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chalk": "^4.1.2",
+    "fca-unofficial-force": "^10.3.13",
+    "ffmpeg": "0.0.4",
+    "fs": "0.0.1-security",
+    "fs-extra": "^10.0.0",
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2",
+    "strip-bom": "^4.0.0",
+    "sync-request": "^6.1.0",
+  }
+}
