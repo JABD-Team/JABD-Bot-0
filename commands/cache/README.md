@@ -1,2 +1,0 @@
-# JABD-Bot
-ditmemaybucu
