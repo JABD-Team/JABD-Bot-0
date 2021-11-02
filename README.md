@@ -5,9 +5,13 @@
 - Step 2 : Double Click On wibuildtools.bat
 2. Setup And Run Bot
 - Step 1 : Double Click On setup.bat or you can
-  ```npm install```
+  ```sh
+  npm install
+  ```
 - Step 2 : Push get fbstate from c3c-fbstate into bot folder
 - Step 3 : Double Click On startbot.bat
   or you can
-  ```npm start```
+  ```sh
+  npm start
+  ```
  <h3>And We Are Done. Enjoy It!</h3>
