@@ -4,8 +4,7 @@
 - Step 1 : Double Click On NodeGitInstall.bat
 - Step 2 : Double Click On wibuildtools.bat
 <h3>2. Setup And Run Bot<h3>
-- Step 1 : Double Click On setup.bat
-  or you can
+- Step 1 : Double Click On setup.bat or you can
   `hi`
 - Step 2 : Push get fbstate from c3c-fbstate into bot folder
 - Step 3 : Double Click On startbot.bat
