@@ -8,7 +8,7 @@
   ```sh
   npm install
   ```
-- Step 2 : Push get fbstate from <a href="https://github.com/c3cbot/c3c-fbstate">c3c-fbstate</a> into bot folder
+- Step 2 : Push get fbstate from <a href="https://github.com/c3cbot/c3c-fbstate">c3c-fbstate</a> into bot folder (<a href="https://www.youtube.com/embed/KN6UzbisSFo">How to get fbstate.json<a>)
 - Step 3 : Double Click On startbot.bat
   or you can
   ```sh
