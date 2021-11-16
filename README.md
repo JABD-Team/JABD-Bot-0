@@ -1,6 +1,6 @@
 # JABD-Bot
 # How To Use
-1. Step for he beginners who have never installed bots before (if you have tried other source bots, please see item 2)
+1. Step for the beginners who have never installed bots before (if you have tried other source bots, please see item 2)
 - Step 1 : Double Click On NodeGitInstall.bat
 - Step 2 : Double Click On wibuildtools.bat
 2. Setup And Run Bot
