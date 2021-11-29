@@ -8,7 +8,10 @@ var originalconfig = {
     prefix: "/",
     logEvent: false,
     seflListen: false,
-    lang: "vi_VN"
+    spotify : {
+        clientId: "97c3e7bd62554a2089e037cb7c1f8836",
+        clientSecret: "b6609e7258154766822ca43565fa8932"
+    }
 }
 function getCF(){
     if (fs.existsSync("./config.json")) {
