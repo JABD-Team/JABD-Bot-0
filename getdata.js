@@ -2,17 +2,7 @@ const fs = require("fs");
 const path = require("path");
 var stripBom = require("strip-bom");
 const log = require("./function/log.js");
-var originalconfig = {
-    botname: "JABD",
-    admin: "",
-    prefix: "/",
-    logEvent: false,
-    seflListen: false,
-    spotify : {
-        clientId: "",
-        clientSecret: ""
-    }
-}
+var originaldata = {}
 
 function getDT(){
     if (fs.existsSync("./data.json")) {
