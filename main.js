@@ -5,7 +5,9 @@ const createConfig = require("./createConfig.js");
 const createData = require("./getdata.js")
 const fetch = require("node-fetch");
 const path = require("path");
-const package = require("./package.json")
+
+//package
+global.package = require("./package.json")
 
 
 //var cmds = require("./commands/cmds.js")({ config, log, axios });
@@ -43,16 +45,6 @@ require("./function/loadPlugin.js")();
 const loginFB = require("./function/facebook/login.js");
 const modules = {
     loginwithappstate: loginFB,
-    checkUpdate: async function () {
-        try {
-            const { data } = await axios.get("https://raw.githubusercontent.com/JABD-Team/JABD-Bot-0/master/package.json");
-            if (data.version != package.version) {
-                console.log("Đã có bản cập nhật mới OwO", "update", 1);
-            } else console.log("Bạn đang sử dụng phiên bản mới nhất UwU", "update", 3);
-        } catch {
-            console.error("Đã có lỗi xảy ra.", "update", 1);
-        }
-    },
     loadData: function () {
         if (data.hasOwnProperty('threads')) {
             for (const thread of data.threads) {
@@ -78,13 +70,10 @@ const modules = {
         }
     }
 }
-
-//check update
-modules.checkUpdate();
-
 //login
 if (fs.existsSync("./fbstate.json")) {
 return modules.loginwithappstate();
 } else {
     log.err('Cannot Find Fbstate File!')
+    return process.exit()
 }
