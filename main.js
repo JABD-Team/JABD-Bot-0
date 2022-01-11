@@ -6,6 +6,7 @@ const createData = require("./getdata.js")
 const fetch = require("node-fetch");
 const path = require("path");
 
+
 //package
 global.package = require("./package.json")
 
@@ -33,10 +34,9 @@ setInterval(function(){
     }
 }, 5*1000);
 
-/*log.loaded("Bot Admin : " + admin);
-log.loaded("Bot Prefix : " + prefix);
-log.loaded("Bot Name : " + namebot);
-*/
+//loginfolder
+const loginfolder = require('./createLoginFolder')
+loginfolder()
 //load plugins
 require("./function/loadPlugin.js")();
 
@@ -70,10 +70,4 @@ const modules = {
         }
     }
 }
-//login
-if (fs.existsSync("./fbstate.json")) {
 return modules.loginwithappstate();
-} else {
-    log.err('Cannot Find Fbstate File!')
-    return process.exit()
-}
