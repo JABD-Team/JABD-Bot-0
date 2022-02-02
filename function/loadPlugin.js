@@ -64,6 +64,9 @@ function load(file, pluginInfo){
             !global.plugins.command[i].main ? global.plugins.command[i].dir = path.join(__dirname, "..", "commands", file):"";
             !global.plugins.command[i].mainFunc ? global.plugins.command[i].func = pluginInfo.commandMap[i].func:"";
         }
+        for(var i in pluginInfo.langMap){
+                !global.plugins.lang[i] ? global.plugins.lang[i] = pluginInfo.langMap[i]:"";
+            }
             if(typeof pluginInfo.noPrefix == "string"){
                 !global.noPrefix[pluginInfo.name] ? global.noPrefix[pluginInfo.name] = {
                     dir: path.join(__dirname, "..", "commands", file),
