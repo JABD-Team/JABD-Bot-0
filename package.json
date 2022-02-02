@@ -1,6 +1,6 @@
 {
   "name": "JABD",
-  "version": "0.0.",
+  "version": "0.0.3",
   "description": "ChatBot For Personal Facebook Account",
   "main": "main.js",
   "scripts": {
