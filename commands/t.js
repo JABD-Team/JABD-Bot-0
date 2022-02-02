@@ -30,3 +30,7 @@ function config() {
 async function t(event, api) {
     api.sendMessage(global.langm[global.config.lang].text, event.threadID);
 }
+module.exports = {
+    config,
+    t
+}
