@@ -26,6 +26,9 @@ global.config = createConfig();
 //load data
 global.data = createData();
 
+//load lang
+global.lang = require("./lang/" + global.config.lang + ".json")
+
 setInterval(function(){
     try{
         fs.writeFileSync(path.join(__dirname, "data.json"), JSON.stringify(global.data, null, 4)); 
