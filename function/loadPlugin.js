@@ -94,7 +94,7 @@ function load(file, pluginInfo){
                     func: pluginInfo.noPrefix
                 }:"";
             }
-        console.log("Đã Load Thành Công Func : "+pluginInfo.name+" "+pluginInfo.version+" bởi "+pluginInfo.author)
+        console.log("Đã Load Thành Công Commands : "+pluginInfo.name+" "+pluginInfo.version+" bởi "+pluginInfo.author)
     //}
     /*catch(err){
         console.error("Không thể load command \""+file+"\" với lỗi: "+err)
