@@ -81,7 +81,7 @@ function load(file, pluginInfo){
             !global.plugins.command[i].help ? global.plugins.command[i].more = pluginInfo.commandMap[i].more:"";
             !global.plugins.command[i].tag ? global.plugins.command[i].des = pluginInfo.commandMap[i].des:"";
             !global.plugins.command[i].author ? global.plugins.command[i].author = pluginInfo.author:"";
-            !global.plugins.command[i].main ? global.plugins.command[i].dir = path.join(__dirname, ".", "func", file):"";
+            !global.plugins.command[i].main ? global.plugins.command[i].dir = path.join(__dirname, "..", "commands", file):"";
             !global.plugins.command[i].mainFunc ? global.plugins.command[i].func = pluginInfo.commandMap[i].func:"";
             
         }
