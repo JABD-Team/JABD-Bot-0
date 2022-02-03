@@ -1,4 +1,7 @@
 {
     "ErrHelp": "Lệnh không xác định! Vui lòng nhập '{0}help' để biết thêm thông tin.",
-    "Donothavepermission": "Bạn không có quyền làm điều này."
+    "Wrongcommand": "Lệnh này không tồn tại !.",
+    "Detailcommand": "Chi tiết lệnh: \ n-Cách thực hiện: {0} \ n-Mô tả: {1}",
+    "Listcommand": "Danh sách lệnh:",
+    "Pagecommand": "Trang"
 }
