@@ -76,7 +76,7 @@ function runCM(event, api){
         }
         ccm = true
     }
-    if (!ccm) api.sendMessage(`Sai lệnh. Sử dụng "${global.config.prefix}help" để xem danh sách lệnh` , event.threadID, event.messageID);
+    if (!ccm) api.sendMessage(`${global.lang.ErrHelp.replace("{0}", global.config.prefix)}` , event.threadID, event.messageID);
 }
 function listen(event, api){
     switch (event.type) {
@@ -137,20 +137,18 @@ async function load(api){
 function loginn() {
 	var filelogin = fs.readdirSync(path.join(__dirname, "..", "../loginfile"))
 	if(filelogin.length == 0){
-		setTimeout(function () {
-			console.error((' {"error":"Error retrieving userID. This can be caused by a lot of things, including getting blocked by Facebook for logging in from an unknown location. Try logging in with a browser to verify."}'))			
-			console.error("Không tìm thấy file login"),
-			console.error("Vui lòng sử dụng file login .json của J2Team hoặc C3C..."),
-			console.error("Khởi động lại bot...")}, 3000)
-			setTimeout(function () {child_process.execSync("npm start" ,  {
-				stdio: "inherit"
-				})},6000)
+		console.error(('{"error":"Error retrieving userID. This can be caused by a lot of things, including getting blocked by Facebook for logging in from an unknown location. Try logging in with a browser to verify."}'))			
+		console.error("Login file not found"),
+		console.error("Please use J2Team or C3C login .json file..."),
+		console.error("Shutting down bot...")
+		process.exit()
 	} else {
 		for (var i = 0; i < filelogin.length; i++) {
 				if (filelogin[i].endsWith(".json")) {
 					var file = filelogin[i]
 					var json = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "../loginfile", file), 'utf8'));
 					if (json.url && json.cookies) {
+						console.log("Found J2TEAM Login File...")
 						let appstate = [];
 						for ( const i of json.cookies) {
 							appstate.push({
@@ -169,9 +167,11 @@ function loginn() {
 								fs.unlinkSync(path.join(__dirname, "..", "../loginfile", file))
 								return process.exit()
 							}
-								load(api);
+                            console.log('[FACEBOOK] Logged in');
+							return load(api)
 							})
 					} else {
+						console.log("Found C3C Login File...")
 						require("npmlog").emitLog = () => {};
 						return login({appState: JSON.parse(JSON.stringify(json))}, (err, api) => {
 							if(err){
@@ -179,25 +179,59 @@ function loginn() {
 								console.error('Not logged in');
 								fs.unlinkSync(path.join(__dirname, "..", "../loginfile", file))
 								return process.exit()
-								
 							}
-							
-								load(api);
-							
-							
+							console.log('[FACEBOOK] Logged in');
+							return load(api)
 						})
+					}
+				} else if (filelogin[i].endsWith(".txt")) {
+					var atp = fs.readFileSync(path.join(__dirname, "..", "../loginfile", filelogin[i]), 'utf8');
+					console.log("Found ATP Login File...")
+					const unofficialAppState = []
+					const items = atp.split(";|")[0].split(";")
+					if (items.length < 2) {
+						console.error(" Not a atp cookie")
+						process.exit()
+					}
+					const validItems = ["sb", "datr", "c_user", "xs"]
+					let validCount = 0
+					for (const item of items) {
+						const key = item.split("=")[0]
+						const value = item.split("=")[1]
+						if (validItems.includes(key)) validCount++
+						unofficialAppState.push({
+							key,
+							value,
+							domain: "facebook.com",
+							path: "/"
+						})
+					}
+					if (validCount >= validItems.length) {
+						require("npmlog").emitLog = () => {};
+						return login({appState: JSON.parse(JSON.stringify(unofficialAppState))}, (err, api) => {
+							if(err){
+								console.error(JSON.stringify(err))
+								console.error('Not logged in');
+								fs.unlinkSync(path.join(__dirname, "..", "../loginfile", filelogin[i]))
+								return process.exit()
+							}
+							console.log('[FACEBOOK] Logged in');
+							return load(api)
+						})
+					} else {
+						console.error("Not a ATP cookie")
+						fs.unlinkSync(path.join(__dirname, "..", "../loginfile", filelogin[i]))
 					}
 				} else {
 					setTimeout(function () {
 						console.error((' {"error":"Error retrieving userID. This can be caused by a lot of things, including getting blocked by Facebook for logging in from an unknown location. Try logging in with a browser to verify."}'))
-						console.error("Không tìm thấy file login"),
-						console.error("Vui lòng sử dụng file login .json của J2Team hoặc C3C..."),
-						console.error("Khởi động lại bot...")}, 3000)
-						setTimeout(function () {child_process.execSync("npm start" ,  {
-							stdio: "inherit"
-							})}, 6000)
+						console.error("Login file not found"),
+						console.error("Please use J2Team or C3C login .json file..."),
+						console.error("Shutting down bot...")}, 3000)
+                        process.exit()
 				}
 			}
 		}
 }
 module.exports = loginn;
+
