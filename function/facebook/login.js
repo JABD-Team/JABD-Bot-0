@@ -22,7 +22,7 @@ function inout(event,api) {
 if ( event.logMessageType == "log:subscribe" ){
 	if (event.logMessageData.addedParticipants.some(id => id.userFbId == api.getCurrentUserID())) {
 		return api.sendMessage(`JABD Connected! Prefix : ${global.config.prefix}`, event.threadID, () => {
-			api.changeNickname(`[${global.config.prefix}]${global.config.namebot}`, event.threadID, api.getCurrentUserID());
+			api.changeNickname(`[${global.config.prefix}]${global.config.botname}`, event.threadID, api.getCurrentUserID());
 		});
 	} else if (event.logMessageData.addedParticipants.forEach(id => {
 		let logsub = async () => {
