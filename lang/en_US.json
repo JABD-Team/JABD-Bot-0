@@ -1,4 +1,7 @@
 {
     "ErrHelp": "Undefined command ! Please type '{0}help' for more information.",
-    "Donothavepermission": "You don't have permission to do this."
+    "Wrongcommand": "This command is not exist!.",
+    "Detailcommand": "Command details:\n-How to : {0} \n-Description: {1}",
+    "Listcommand": "Command list:",
+    "Pagecommand": "Page"
 }
